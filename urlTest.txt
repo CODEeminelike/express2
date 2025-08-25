@@ -1,0 +1,63 @@
+2. Xử lý đánh giá nhà hàng
+text
+POST   /api/restaurants/:restaurantId/reviews/:userId    # Thêm đánh giá
+GET    /api/restaurants/:restaurantId/reviews            # Lấy danh sách đánh giá theo nhà hàng
+GET    /api/users/:userId/restaurant-reviews             # Lấy danh sách đánh giá theo user
+3. User đặt món
+text
+POST   /api/orders/:userId                               # Thêm order
+
+
+
+Test:
+User 1 like Restaurant 1:
+GET http://localhost:3333/api/restaurants/1/users/1/likes
+
+User 2 like Restaurant 1:
+GET http://localhost:3333/api/restaurants/1/users/2/likes
+
+User 1 like Restaurant 2:
+GET http://localhost:3333/api/restaurants/2/users/1/likes
+
+User 3 like Restaurant 3:
+GET http://localhost:3333/api/restaurants/3/users/3/likes
+
+
+Lấy like theo restaurant 1:
+GET http://localhost:3333/api/restaurants/1/likes
+
+Lấy like theo restaurant 2:
+GET http://localhost:3333/api/restaurants/2/likes
+
+Lấy like theo user 1:
+GET http://localhost:3333/api/users/1/restaurant-likes
+
+Lấy like theo user 2:
+GET http://localhost:3333/api/users/2/restaurant-likes
+
+
+Thêm/cập nhật đánh giá:
+
+POST http://localhost:3333/api/restaurants/1/reviews/1
+Body: { "rating": 5 }
+
+Lấy đánh giá theo nhà hàng 1:
+GET http://localhost:3333/api/restaurants/1/reviews
+
+Lấy đánh giá theo nhà hàng 2:
+GET http://localhost:3333/api/restaurants/2/reviews
+
+Lấy đánh giá theo user 1:
+GET http://localhost:3333/api/users/1/restaurant-reviews
+
+Lấy đánh giá theo user 2:
+GET http://localhost:3333/api/users/2/restaurant-reviews
+
+
+ORDER
+POST http://localhost:3333/api/orders/1
+Body: { 
+  "foodId": 1, 
+  "amount": 2, 
+  "arrSubId": ["sub1"] 
+}
